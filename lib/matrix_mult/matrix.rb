@@ -24,9 +24,10 @@ module MatrixMult
     end
 
     def mult_and_sum(row, column)
-      result = row.zip(column)
-      result.map! {|elem| elem.first * elem.last}
-      result = result.inject { |sum, value| sum += value }
+      sum = 0
+      result = row.zip(column) { |values| sum += (values.first * values.last) }
+
+      sum
     end
 
 
