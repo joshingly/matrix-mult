@@ -15,6 +15,17 @@ describe "Matrix" do
       matrix.num_rows.should be(2)
       matrix.num_columns.should be(3)
     end
+  end
 
+  describe "#*" do
+  end
+
+  describe "#get_coumn" do
+    let(:matrix) { MatrixMult::Matrix.new(matrix_one) }
+
+    it "should get the column" do
+      matrix.get_column(1).should == [2,5]
+      matrix.get_column(2).should == [3,6]
+    end
   end
 end

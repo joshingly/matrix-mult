@@ -7,5 +7,9 @@ module MatrixMult
       @num_rows = @array.length
       @num_columns = @array.first.length
     end
+
+    def get_column(column_number)
+      @array.map { |row| row[column_number] }
+    end
   end
 end
