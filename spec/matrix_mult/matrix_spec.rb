@@ -39,4 +39,19 @@ describe "Matrix" do
       matrix_one.get_column(2).should == [3,6]
     end
   end
+
+  describe "#partition" do
+    context "even split" do
+      it "should split up the matrix into parts" do
+        matrix_one.partition(2).length.should be(2)
+        matrix_one.partition(1).length.should be(1)
+      end
+    end
+
+    context "uneven split" do
+      it "should split up the matrix into parts" do
+        matrix_two.partition(2).length.should be(2)
+      end
+    end
+  end
 end

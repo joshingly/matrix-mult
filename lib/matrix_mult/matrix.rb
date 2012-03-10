@@ -19,6 +19,23 @@ module MatrixMult
       MatrixMult::Matrix.new(output)
     end
 
+    def partition(number_of_parts)
+      number_of_parts = @num_rows if number_of_parts > @num_rows
+      partitioned_matrix = []
+      partition_size = @num_rows / number_of_parts
+
+      number_of_parts.times do |i|
+        start = partition_size * i
+        finish = partition_size * (i + 1) - 1
+        finish = -1 if i == number_of_parts - 1
+
+        partitioned_matrix << @array.slice(start..finish)
+      end
+
+      partitioned_matrix
+    end
+
+
     def ==(matrix)
       matrix.array == @array
     end
