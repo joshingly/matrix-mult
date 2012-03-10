@@ -12,11 +12,7 @@ module MatrixMult
       output = Array.new(@num_rows) { Array.new(matrix.num_columns, 0) }
       @array.each_with_index do |row, row_num|
         row.each_with_index do |value, column_num|
-          result = row.zip(matrix.get_column(column_num))
-          result.map! {|elem| elem.first * elem.last}
-          result = result.inject { |sum, value| sum += value }
-
-          output[row_num][column_num] = result
+          output[row_num][column_num] = mult_and_sum(row, matrix.get_column(column_num))
         end
       end
 
@@ -26,6 +22,13 @@ module MatrixMult
     def ==(matrix)
       matrix.array == @array
     end
+
+    def mult_and_sum(row, column)
+      result = row.zip(column)
+      result.map! {|elem| elem.first * elem.last}
+      result = result.inject { |sum, value| sum += value }
+    end
+
 
     def get_column(column_number)
       @array.map { |row| row[column_number] }
