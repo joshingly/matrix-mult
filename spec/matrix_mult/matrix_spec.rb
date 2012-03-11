@@ -39,15 +39,20 @@ describe "Matrix" do
 
   describe "#partition" do
     context "even split" do
+      let(:partition_one) { matrix_one.partition(1) }
+      let(:partition_two) { matrix_one.partition(2) }
+
       it "should split up the matrix into parts" do
-        matrix_one.partition(2).length.should be(2)
-        matrix_one.partition(1).length.should be(1)
+        partition_one.should == [[0,1]]
+        partition_two.should == [[0],[1]]
       end
     end
 
     context "uneven split" do
+      let(:partition) { matrix_two.partition(2) }
+
       it "should split up the matrix into parts" do
-        matrix_two.partition(2).length.should be(2)
+        partition.should == [[0],[1,2]]
       end
     end
   end
