@@ -13,12 +13,12 @@ module MatrixMult
       output = Array.new(@num_rows) { Array.new(matrix.num_columns, 0) }
       threads = []
 
-      partitioned = partition(num_threads)
+      partitions = partition(num_threads)
 
       num_threads.times do |part|
 
         threads << Thread.new do
-          partitioned[part].each do |row_num|
+          partitions[part].each do |row_num|
             @array[row_num].each_with_index do |value, column_num|
               output[row_num][column_num] = mult_and_sum(@array[row_num], matrix.get_column(column_num))
             end
