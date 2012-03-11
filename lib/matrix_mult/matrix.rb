@@ -32,7 +32,7 @@ module MatrixMult
     end
 
     def partition(number_of_parts)
-      partitioned_matrix = []
+      partitions = []
       partition_size = @num_rows / number_of_parts
 
       number_of_parts.times do |i|
@@ -40,10 +40,10 @@ module MatrixMult
         finish = partition_size * (i + 1) - 1
         finish = num_rows - 1 if i == number_of_parts - 1
 
-        partitioned_matrix << (start..finish).to_a
+        partitions << (start..finish).to_a
       end
 
-      partitioned_matrix
+      partitions
     end
 
     def ==(matrix)
