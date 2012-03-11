@@ -27,9 +27,9 @@ module MatrixMult
       number_of_parts.times do |i|
         start = partition_size * i
         finish = partition_size * (i + 1) - 1
-        finish = -1 if i == number_of_parts - 1
+        finish = num_rows - 1 if i == number_of_parts - 1
 
-        partitioned_matrix << @array.slice(start..finish)
+        partitioned_matrix << (start..finish).to_a
       end
 
       partitioned_matrix
