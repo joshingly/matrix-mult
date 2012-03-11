@@ -10,17 +10,23 @@ module MatrixMult
 
     def *(matrix, num_threads = 1)
       output = Array.new(@num_rows) { Array.new(matrix.num_columns, 0) }
+      threads = []
 
       partitioned = partition(num_threads)
 
-      partitioned.each do |part|
-        part.each do |row_num|
-          @array[row_num].each_with_index do |value, column_num|
-            output[row_num][column_num] = mult_and_sum(@array[row_num], matrix.get_column(column_num))
+      num_threads.times do |part|
+
+        threads << Thread.new do
+          partitioned[part].each do |row_num|
+            @array[row_num].each_with_index do |value, column_num|
+              output[row_num][column_num] = mult_and_sum(@array[row_num], matrix.get_column(column_num))
+            end
           end
         end
+
       end
 
+      threads.each { |thread| thread.join }
       MatrixMult::Matrix.new(output)
     end
 
