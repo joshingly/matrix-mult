@@ -35,7 +35,6 @@ module MatrixMult
       partitioned_matrix
     end
 
-
     def ==(matrix)
       matrix.array == @array
     end
@@ -46,7 +45,6 @@ module MatrixMult
 
       sum
     end
-
 
     def get_column(column_number)
       @array.map { |row| row[column_number] }
