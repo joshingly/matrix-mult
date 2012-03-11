@@ -36,10 +36,21 @@ describe "Matrix" do
                           [15,63,23]] }
 
       let(:answer) { MatrixMult::Matrix.new(raw_answer) }
-      let(:output) { matrix_one.* matrix_two, 2 }
 
-      it "should give the right answer" do
-        output.should == answer
+      context "specify a valid number of threads" do
+        let(:output) { matrix_one.* matrix_two, 2 }
+
+        it "should give the right answer" do
+          output.should == answer
+        end
+      end
+
+      context "specify more threads than rows" do
+        let(:output) { matrix_one.* matrix_two, 9 }
+
+        it "should give the right answer" do
+          output.should == answer
+        end
       end
     end
   end

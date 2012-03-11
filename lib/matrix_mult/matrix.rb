@@ -9,6 +9,7 @@ module MatrixMult
     end
 
     def *(matrix, num_threads = 1)
+      num_threads = @num_rows if num_threads > @num_rows
       output = Array.new(@num_rows) { Array.new(matrix.num_columns, 0) }
       threads = []
 
