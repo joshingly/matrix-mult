@@ -32,7 +32,6 @@ module MatrixMult
     end
 
     def partition(number_of_parts)
-      number_of_parts = @num_rows if number_of_parts > @num_rows
       partitioned_matrix = []
       partition_size = @num_rows / number_of_parts
 
