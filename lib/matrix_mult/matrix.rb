@@ -8,6 +8,10 @@ module MatrixMult
       @num_columns = @array.first.length
     end
 
+    def self.generate_random(size, max = 10)
+      Array.new(size) { Array.new(size).map { rand(max) } }
+    end
+
     def *(matrix, num_threads = 1)
       num_threads = @num_rows if num_threads > @num_rows
       output = Array.new(@num_rows) { Array.new(matrix.num_columns, 0) }

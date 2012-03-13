@@ -18,6 +18,14 @@ describe "Matrix" do
     end
   end
 
+  describe ".generate_random" do
+    let(:raw_random_matrix) { MatrixMult::Matrix.generate_random(5) }
+    it "should create a raw matrix" do
+      raw_random_matrix.length.should be(5)
+      raw_random_matrix.first.length.should be(5)
+    end
+  end
+
   describe "#*" do
     context "default number of threads(1)" do
       let(:raw_answer) { [[6,27,8],
