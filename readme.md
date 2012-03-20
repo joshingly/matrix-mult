@@ -1,5 +1,9 @@
 # Parallel Matrix Multiplication
 
+## Description
+
+Parallelized naive matrix multiplication.
+
 ## Benchmark
 
 run example/benchmark.rb
