@@ -1,9 +1,6 @@
 require 'benchmark'
 require_relative '../lib/matrix_mult'
 
-time = Benchmark.realtime do
-end
-
 def do_benchmark(sample_size, matrix_size, threads)
   times = []
 
